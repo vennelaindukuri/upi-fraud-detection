@@ -1,0 +1,22 @@
+  ret = a @ b
+  ret = a @ b
+  ret = a @ b
+Holdout: 10,303 transactions · 255 fraud (2.48%) · ROC-AUC 0.9967 · PR-AUC 0.9615
+
+        System  Precision  Recall    F1  ROC-AUC  False positive rate  False blocks  Missed fraud
+  Static rules      0.306   0.486 0.376    0.729               0.0280           281           131
+ML allow/block      0.969   0.867 0.915    0.997               0.0007             7            34
+ ML + OTP tier      0.987   0.914 0.949    0.997               0.0003             3            22
+
+truth       fraud  genuine
+decision                  
+ALLOW          22    10027
+BLOCK         199        3
+OTP VERIFY     34       18
+
+Fraud that was allowed, by type:
+fraud_type
+social_engineering    14
+burst                  4
+malicious_qr           2
+account_takeover       2

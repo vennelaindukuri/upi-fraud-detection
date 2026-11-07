@@ -1,0 +1,15 @@
+# Python environment and caches
+.venv/
+__pycache__/
+*.pyc
+
+# Large generated files (rebuild with: python seed_from_dataset.py && python train_models.py)
+upi_fraud.db
+models/artifacts/*.joblib
+
+# Old copies and OS files
+_backup_before_redflag/
+.DS_Store
+
+# Not part of the app
+Claude outputs/

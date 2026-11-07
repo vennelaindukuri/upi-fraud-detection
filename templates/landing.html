@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>REDFLAG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky:#E9E4DA;      /* warm beige top */
+    --mist:#DCDCD8;     /* grey mid */
+    --floor:#B9BDC2;    /* cool grey bottom */
+    --ink:#1C2633;      /* blue-charcoal text */
+    --blue:#2F5D8C;
+    --muted:#6B7480;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden;background:var(--sky);color:var(--ink);
+    font-family:"JetBrains Mono",ui-monospace,monospace;cursor:crosshair}
+  .bg{position:fixed;inset:0;
+    background:
+      radial-gradient(120% 70% at 50% 38%, #F3EFE7 0%, rgba(243,239,231,0) 60%),
+      linear-gradient(180deg,var(--sky) 0%, #E2DFD8 52%, var(--mist) 70%, var(--floor) 100%);}
+  .bg::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34%;
+    background:linear-gradient(180deg,rgba(185,189,194,0) 0%,rgba(150,158,168,.45) 100%);}
+  canvas#gl{position:fixed;inset:0;width:100%;height:100%;display:block}
+
+  header{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;
+    padding:22px 28px;font-size:11px;letter-spacing:.08em;z-index:3}
+  .logo{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--ink);text-decoration:none}
+  .logo svg{width:14px;height:16px}
+  .logo i{font-family:"Anton",sans-serif;font-style:normal;font-size:12px;color:var(--blue);letter-spacing:.06em;margin-left:2px}
+  nav{display:flex;gap:18px}
+  nav a{color:var(--ink);text-decoration:none;text-transform:uppercase}
+  nav a:hover{color:var(--blue)}
+
+  .rail{position:fixed;left:16px;top:50%;transform:translateY(-50%);height:46vh;width:14px;z-index:3}
+  .rail .tick{position:absolute;left:0;height:1px;background:var(--muted);opacity:.55}
+  .rail .num{position:absolute;left:0;font-size:8px;color:var(--muted);transform:translateY(-50%) rotate(-90deg);transform-origin:left center}
+  .rail .mark{position:absolute;left:-2px;width:16px;height:2px;background:var(--blue);transition:none}
+
+  .vbar{position:fixed;right:18px;top:50%;transform:translateY(-50%);width:2px;height:120px;background:rgba(28,38,51,.15);z-index:3}
+  .vbar b{position:absolute;left:0;top:0;width:2px;height:30%;background:var(--ink)}
+
+  footer{position:fixed;left:0;right:0;bottom:22px;display:flex;justify-content:space-between;align-items:flex-end;padding:0 24px;z-index:3}
+  .pill{display:flex;align-items:center;gap:8px;border:1px solid rgba(28,38,51,.35);border-radius:20px;padding:5px 12px;font-size:10px;letter-spacing:.08em;background:rgba(233,228,218,.35);backdrop-filter:blur(4px)}
+  .pill .line{width:22px;height:1px;background:var(--ink);position:relative;overflow:hidden}
+  .pill .line::after{content:"";position:absolute;inset:0;background:var(--blue);transform:translateX(-100%);animation:slide 1.6s ease-in-out infinite}
+  @keyframes slide{to{transform:translateX(100%)}}
+  .tag{text-align:center;font-family:"Anton",sans-serif;font-size:13px;line-height:1.25;letter-spacing:.03em;text-transform:uppercase;color:var(--ink)}
+  .tag svg{display:block;margin:0 auto 6px;width:20px;height:14px}
+  .ver{font-size:10px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;min-width:92px;text-align:right}
+
+  /* make-a-transaction button: glass pill with a travelling sheen and an arrow that slides */
+  .cta{position:fixed;left:50%;top:calc(50% + min(24vh,215px));transform:translateX(-50%);z-index:5;
+    display:inline-flex;align-items:center;gap:14px;padding:8px 8px 8px 24px;border-radius:999px;text-decoration:none;
+    color:var(--ink);font:600 11px "JetBrains Mono",monospace;letter-spacing:.16em;text-transform:uppercase;
+    background:rgba(248,245,239,.55);border:1px solid rgba(28,38,51,.22);
+    backdrop-filter:blur(14px) saturate(1.15);-webkit-backdrop-filter:blur(14px) saturate(1.15);
+    box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 22px 50px -22px rgba(28,38,51,.45);
+    overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s;
+    opacity:0;animation:ctaIn 1s .6s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes ctaIn{from{opacity:0;transform:translate(-50%,16px)}to{opacity:1;transform:translate(-50%,0)}}
+  .cta::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.7) 48%,transparent 66%);
+    transform:translateX(-120%);animation:sheen 3.6s 1.8s ease-in-out infinite}
+  @keyframes sheen{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+  .cta .dot{width:7px;height:7px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 0 rgba(47,93,140,.5);animation:ping 2s infinite}
+  @keyframes ping{70%{box-shadow:0 0 0 8px rgba(47,93,140,0)}100%{box-shadow:0 0 0 0 rgba(47,93,140,0)}}
+  .cta .arr{position:relative;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--sky);display:grid;place-items:center;overflow:hidden;transition:background .3s}
+  .cta .arr i{font-style:normal;font-size:15px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  .cta .arr i+i{position:absolute;transform:translateX(-30px)}
+  .cta:hover{transform:translate(-50%,-3px);border-color:rgba(47,93,140,.55);box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 28px 60px -22px rgba(47,93,140,.55)}
+  .cta:hover .arr{background:var(--blue)}
+  .cta:hover .arr i:first-child{transform:translateX(30px)}
+  .cta:hover .arr i+i{transform:translateX(0)}
+
+  .hint{position:fixed;left:50%;top:calc(50% + min(17vh,150px));transform:translateX(-50%);font-size:10px;letter-spacing:.2em;color:var(--muted);z-index:3;transition:opacity .6s}
+  /* wordmark shown instantly while three.js + fonts load; doubles as the no-WebGL fallback */
+  .loader{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:4;
+    transition:opacity .9s ease,visibility .9s;background:transparent;pointer-events:none}
+  .loader b{font:400 clamp(90px,20vw,280px)/.85 Anton,"Arial Narrow",Impact,sans-serif;color:#1E3A5F;letter-spacing:.005em;animation:breathe 2.4s ease-in-out infinite}
+  .loader span{font-size:10px;letter-spacing:.3em;color:var(--muted)}
+  .loader.gone{opacity:0;visibility:hidden}
+  .loader.static b{animation:none}
+  @keyframes breathe{50%{opacity:.7;transform:scale(.99)}}
+  .kbd{display:none;font:600 9px "JetBrains Mono",monospace;border:1px solid rgba(28,38,51,.3);border-radius:5px;padding:2px 5px;margin-left:-4px;opacity:.7}
+  .returning .kbd{display:inline-block}
+  .returning .cta{animation-delay:.1s}
+
+  @media (max-width:640px){
+    header{padding:16px}
+    nav{gap:10px;font-size:9px}
+    .rail,.vbar{display:none}
+    .tag{font-size:11px}
+    .ver{display:none}
+    .cta{top:auto;bottom:96px}
+    footer{padding:0 16px}
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<canvas id="gl"></canvas>
+
+<header>
+  <a class="logo" href="/">redflag</a>
+</header>
+
+<div class="rail" id="rail"></div>
+<div class="vbar"><b id="vb"></b></div>
+
+<div class="hint" id="hint">MOVE YOUR CURSOR →</div>
+<a class="cta" id="cta" href="/app#users"><span class="dot"></span>Make a transaction<span class="kbd">↵</span><span class="arr"><i>→</i><i>→</i></span></a>
+<div class="loader" id="loader"><b>REDFLAG</b><span id="loaderNote">REAL-TIME UPI FRAUD DETECTION AI</span></div>
+
+<footer>
+  <div class="pill"><span class="line"></span><span id="pct">00</span></div>
+  <div class="tag">
+    <svg viewBox="0 0 20 14" fill="none"><path d="M2 13V1" stroke="#1C2633" stroke-width="1.6" stroke-linecap="round"/><path d="M2.5 1.5h13l-3 4 3 4h-13z" fill="#1C2633"/></svg>
+    Flagging suspicious payments<br>before the money moves
+  </div>
+  <span class="ver" aria-hidden="true"></span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* returning visitors: CTA appears immediately and Enter jumps straight into the app */
+(function(){
+  let seen = false;
+  try { seen = localStorage.getItem('rf-seen') === '1'; localStorage.setItem('rf-seen', '1'); } catch(e){}
+  if (seen) document.body.classList.add('returning');
+  addEventListener('keydown', e => { if (e.key === 'Enter') location.href = '/app#users'; });
+})();
+(async function(){
+  /* no WebGL / three.js blocked → keep the static wordmark as the hero */
+  let ok = !!window.THREE;
+  try { ok = ok && !!document.createElement('canvas').getContext('webgl'); } catch(e){ ok = false; }
+  if (!ok){
+    const l = document.getElementById('loader'); l.classList.add('static');
+    document.getElementById('loaderNote').textContent = 'REAL-TIME UPI FRAUD DETECTION AI';
+    document.getElementById('hint').style.display = 'none';
+    return;
+  }
+  /* ---------------- setup ---------------- */
+  const canvas = document.getElementById('gl');
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
+  camera.position.set(0, 0, 10);
+
+  const PHRASE = [
+    {t:'REDFLAG', c:'#1E3A5F'},
+    {t:'REAL-TIME', c:'#1C2633'},
+    {t:'UPI', c:'#1C2633'},
+    {t:'FRAUD', c:'#1C2633'},
+    {t:'DETECTION', c:'#1C2633'},
+    {t:'AI', c:'#2F5D8C'}
+  ];
+
+  /* ---------------- text ribbon ---------------- */
+  try { await document.fonts.load('400 300px Anton'); } catch(e){}
+  const FONT_PX = 300, GAP = 0.55; // gap in em between words
+  const cv = document.createElement('canvas');
+  const cx = cv.getContext('2d');
+  cx.font = `400 ${FONT_PX}px Anton`;
+  const widths = PHRASE.map(w => cx.measureText(w.t).width);
+  const gapPx = FONT_PX * GAP, padPx = FONT_PX * 2.2;
+  let total = padPx*2 + widths.reduce((a,b)=>a+b,0) + gapPx*(PHRASE.length-1);
+  const scaleDown = Math.min(1, 8192/total);
+  cv.width = Math.ceil(total*scaleDown);
+  cv.height = Math.ceil(FONT_PX*1.25*scaleDown);
+  cx.scale(scaleDown, scaleDown);
+  cx.font = `400 ${FONT_PX}px Anton`;
+  cx.textBaseline = 'middle';
+  let x = padPx; const centers = [];
+  PHRASE.forEach((w,i)=>{
+    cx.fillStyle = w.c;
+    cx.fillText(w.t, x, FONT_PX*1.25/2 + FONT_PX*0.02);
+    centers.push((x + widths[i]/2) * scaleDown);
+    x += widths[i] + gapPx;
+  });
+  const tex = new THREE.CanvasTexture(cv);
+  tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+  tex.minFilter = THREE.LinearMipmapLinearFilter;
+
+  const textUniforms = {
+    uTex:{value:tex}, uOff:{value:0}, uHW:{value:5}, uTime:{value:0}, uVel:{value:0}
+  };
+  let planeH = 2.6, planeW = planeH * cv.width / cv.height;
+  let textGeo = new THREE.PlaneGeometry(planeW, planeH, 600, 8);
+  const textMat = new THREE.ShaderMaterial({
+    uniforms:textUniforms, transparent:true, depthWrite:false, side:THREE.DoubleSide,
+    vertexShader:`
+      uniform float uOff, uHW, uTime, uVel;
+      varying vec2 vUv; varying float vN;
+      void main(){
+        vUv = uv;
+        vec3 p = position;
+        float x = p.x + uOff;
+        float n = x / uHW;                       // -1..1 across the screen
+        float y0 = p.y;
+        // ribbon bends away from the camera at the edges and drops/lifts like the reference
+        float z = -2.2 * n * n;
+        float lift = -0.55 * n * n * n * uHW * 0.25;
+        // twist: words lean as they enter/leave
+        float ang = 0.42 * n * abs(n) + uVel * 0.6 * n;
+        float yy = y0 * cos(ang);
+        float zz = y0 * sin(ang);
+        // gentle breathing wave
+        float wave = 0.05 * sin(x * 0.9 - uTime * 1.2);
+        vec3 q = vec3(x, yy + lift + wave, z + zz);
+        vN = n;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(q, 1.0);
+      }`,
+    fragmentShader:`
+      uniform sampler2D uTex;
+      varying vec2 vUv; varying float vN;
+      void main(){
+        vec4 c = texture2D(uTex, vUv);
+        float fade = 1.0 - smoothstep(1.05, 1.6, abs(vN));
+        // slight haze toward the edges, like the misty reference
+        vec3 col = mix(c.rgb, vec3(0.86,0.85,0.83), smoothstep(0.55, 1.4, abs(vN)) * 0.45);
+        gl_FragColor = vec4(col, c.a * fade);
+        if (gl_FragColor.a < 0.01) discard;
+      }`
+  });
+  const textMesh = new THREE.Mesh(textGeo, textMat);
+  textMesh.position.set(0, -0.15, -1.2);
+  textMesh.renderOrder = 0;
+  scene.add(textMesh);
+
+  const pxToWorld = px => (px / cv.width - 0.5) * planeW;
+  const offStart = () => -pxToWorld(centers[0]);
+  const offEnd   = () => -pxToWorld(centers[centers.length-1]);
+
+  /* ---------------- jellyfish ---------------- */
+  const jelly = new THREE.Group();
+  jelly.visible = false;   // jellyfish removed from the hero; the word ribbon stays
+
+  const bellUniforms = { uPulse:{value:0}, uTime:{value:0} };
+  const bellVert = `
+    uniform float uPulse, uTime;
+    varying vec3 vN; varying vec3 vV; varying vec3 vP;
+    void main(){
+      vec3 p = position;
+      float down = smoothstep(1.0, -0.2, p.y);            // 0 at crown, 1 at rim
+      float a = atan(p.z, p.x);
+      p.xz *= 1.0 - 0.16 * uPulse * down;                   // contraction
+      p.y  *= 1.0 + 0.10 * uPulse;
+      p.y  += 0.05 * sin(a * 14.0 + uTime * 2.0) * smoothstep(0.25, -0.2, p.y); // frilly rim
+      p.xz *= 1.0 + 0.04 * sin(a * 7.0 - uTime) * down;
+      vP = position;
+      vec4 mv = modelViewMatrix * vec4(p, 1.0);
+      vV = normalize(-mv.xyz);
+      vN = normalize(normalMatrix * normal);
+      gl_Position = projectionMatrix * mv;
+    }`;
+  const bellMat = new THREE.ShaderMaterial({
+    uniforms:bellUniforms, transparent:true, depthWrite:false, side:THREE.DoubleSide,
+    vertexShader:bellVert,
+    fragmentShader:`
+      uniform float uPulse, uTime;
+      varying vec3 vN; varying vec3 vV; varying vec3 vP;
+      void main(){
+        float fr = pow(1.0 - abs(dot(normalize(vN), normalize(vV))), 2.2);
+        float a = atan(vP.z, vP.x);
+        float rib = smoothstep(0.9, 1.0, cos(a * 18.0));                 // radial canals
+        float spots = smoothstep(0.6, 0.95, sin(a*8.0+vP.y*9.0) * sin(vP.y*14.0 - uTime*0.6));
+        float down = smoothstep(1.0, -0.2, vP.y);
+        vec3 deep  = vec3(0.10, 0.22, 0.48);   // navy blue
+        vec3 mid   = vec3(0.33, 0.55, 0.90);   // cornflower
+        vec3 cream = vec3(0.93, 0.88, 0.80);   // beige glow
+        vec3 col = mix(mid, deep, down * 0.7);
+        col = mix(col, cream, (1.0 - down) * 0.35 * (1.0 - fr));
+        col = mix(col, deep * 0.8, rib * 0.55);
+        col = mix(col, vec3(0.55,0.72,0.92), spots * 0.35);
+        col += fr * vec3(0.30, 0.40, 0.55);
+        float alpha = 0.62 + 0.35 * fr + rib * 0.2 + down * 0.05;
+        gl_FragColor = vec4(col, clamp(alpha, 0.0, 0.92));
+      }`
+  });
+  const bellGeo = new THREE.SphereGeometry(1, 128, 64, 0, Math.PI*2, 0, Math.PI*0.54);
+  bellGeo.scale(1.08, 0.66, 1.08);
+  const bell = new THREE.Mesh(bellGeo, bellMat);
+  bell.renderOrder = 5;
+  jelly.add(bell);
+
+  const innerMat = new THREE.ShaderMaterial({
+    uniforms:bellUniforms, transparent:true, depthWrite:false, side:THREE.DoubleSide,
+    vertexShader:bellVert,
+    fragmentShader:`
+      varying vec3 vN; varying vec3 vV; varying vec3 vP;
+      void main(){
+        float fr = pow(1.0 - abs(dot(normalize(vN), normalize(vV))), 1.5);
+        float a = atan(vP.z, vP.x);
+        float lobes = smoothstep(0.3, 1.0, cos(a*4.0)) * smoothstep(0.1, 0.7, vP.y);
+        vec3 col = mix(vec3(0.95,0.90,0.82), vec3(0.62,0.74,0.90), fr);
+        col = mix(col, vec3(0.86,0.76,0.62), lobes*0.6);
+        gl_FragColor = vec4(col, 0.18 + lobes*0.35 + fr*0.15);
+      }`
+  });
+  const innerGeo = new THREE.SphereGeometry(0.62, 64, 32, 0, Math.PI*2, 0, Math.PI*0.5); innerGeo.scale(1,0.7,1);
+  const inner = new THREE.Mesh(innerGeo, innerMat);
+  inner.position.y = -0.05;
+  inner.renderOrder = 4;
+  jelly.add(inner);
+
+  // ribbons (tentacles + oral arms)
+  const ribbonMat = (c1, c2, op) => new THREE.ShaderMaterial({
+    transparent:true, depthWrite:false, side:THREE.DoubleSide,
+    uniforms:{ c1:{value:new THREE.Color(c1)}, c2:{value:new THREE.Color(c2)}, op:{value:op} },
+    vertexShader:`varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);} `,
+    fragmentShader:`
+      uniform vec3 c1, c2; uniform float op; varying vec2 vUv;
+      void main(){
+        float edge = 1.0 - pow(abs(vUv.x - 0.5) * 2.0, 2.0);
+        float a = op * edge * (1.0 - smoothstep(0.55, 1.0, vUv.y));
+        gl_FragColor = vec4(mix(c1, c2, vUv.y), a);
+      }`
+  });
+  function makeRibbon(n, mat, order){
+    const g = new THREE.BufferGeometry();
+    const pos = new Float32Array(n*2*3), uv = new Float32Array(n*2*2), idx = [];
+    for(let i=0;i<n;i++){
+      uv[i*4]=0; uv[i*4+1]=i/(n-1); uv[i*4+2]=1; uv[i*4+3]=i/(n-1);
+      if(i<n-1){ const a=i*2; idx.push(a,a+1,a+2, a+1,a+3,a+2); }
+    }
+    g.setAttribute('position', new THREE.BufferAttribute(pos,3));
+    g.setAttribute('uv', new THREE.BufferAttribute(uv,2));
+    g.setIndex(idx);
+    const m = new THREE.Mesh(g, mat); m.frustumCulled = false; m.renderOrder = order;
+    jelly.add(m);
+    return {g, pos, n};
+  }
+  const TENT = 32, TSEG = 80, ARMS = 6, ASEG = 70;
+  const tentMat = ribbonMat('#3F6FB3', '#AFC2D8', 0.95);
+  const armMat  = ribbonMat('#6E98D6', '#E8DCC6', 0.8);
+  const tentacles = [], arms = [];
+  for(let i=0;i<TENT;i++) tentacles.push({ r:makeRibbon(TSEG, tentMat, 2), ang:i/TENT*Math.PI*2 + Math.random()*0.1,
+     len:2.6 + Math.random()*2.4, ph:Math.random()*6.28, w:0.03+Math.random()*0.03 });
+  for(let i=0;i<ARMS;i++) arms.push({ r:makeRibbon(ASEG, armMat, 3), ang:i/ARMS*Math.PI*2,
+     len:2.0 + Math.random()*1.6, ph:Math.random()*6.28, w:0.26+Math.random()*0.12 });
+
+  function updateRibbon(rb, pts, wfn){
+    const p = rb.pos;
+    for(let i=0;i<rb.n;i++){
+      const [x,y,z] = pts[i]; const w = wfn(i/(rb.n-1))*0.5;
+      p[i*6]=x-w; p[i*6+1]=y; p[i*6+2]=z;
+      p[i*6+3]=x+w; p[i*6+4]=y; p[i*6+5]=z;
+    }
+    rb.g.attributes.position.needsUpdate = true;
+  }
+
+  // drifting particles (marine snow)
+  const NP = 220, pg = new THREE.BufferGeometry(), pp = new Float32Array(NP*3), ps = [];
+  for(let i=0;i<NP;i++){ pp[i*3]=(Math.random()-.5)*16; pp[i*3+1]=(Math.random()-.5)*9; pp[i*3+2]=(Math.random()-.5)*6; ps.push(0.1+Math.random()*0.3); }
+  pg.setAttribute('position', new THREE.BufferAttribute(pp,3));
+  const dots = new THREE.Points(pg, new THREE.PointsMaterial({color:0x6E7F94, size:0.035, transparent:true, opacity:0.45, depthWrite:false}));
+  scene.add(dots);
+
+  /* ---------------- UI bits ---------------- */
+  const rail = document.getElementById('rail');
+  for(let i=0;i<=40;i++){
+    const t=document.createElement('div'); t.className='tick';
+    t.style.top=(i/40*100)+'%'; t.style.width=(i%5===0?12:6)+'px'; rail.appendChild(t);
+    if(i%10===0){ const n=document.createElement('div'); n.className='num'; n.style.top=(i/40*100)+'%'; n.style.left='16px'; n.textContent=String(i*2.5|0).padStart(3,'0'); rail.appendChild(n); }
+  }
+  const mark=document.createElement('div'); mark.className='mark'; rail.appendChild(mark);
+  const hint=document.getElementById('hint'), pct=document.getElementById('pct'), vb=document.getElementById('vb');
+
+  /* ---------------- input: cursor position drives the words ---------------- */
+  let target = 0, prog = 0, mx = 0, my = 0, smx = 0, smy = 0, touched = false;
+  function onMove(clientX, clientY){
+    const nx = clientX / innerWidth;
+    target = Math.min(1, Math.max(0, (nx - 0.12) / 0.76));
+    mx = nx*2-1; my = -(clientY/innerHeight*2-1);
+    touched = true;
+  }
+  addEventListener('pointermove', e => onMove(e.clientX, e.clientY));
+  addEventListener('touchmove', e => { const t=e.touches[0]; onMove(t.clientX, t.clientY); }, {passive:true});
+  addEventListener('wheel', e => { target = Math.min(1, Math.max(0, target + e.deltaY*0.0008)); touched = true; }, {passive:true});
+
+  /* ---------------- resize ---------------- */
+  function resize(){
+    const w = innerWidth, h = innerHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w/h; camera.updateProjectionMatrix();
+    const dist = camera.position.z - textMesh.position.z;
+    const viewH = 2*dist*Math.tan(THREE.MathUtils.degToRad(camera.fov/2));
+    const viewW = viewH * camera.aspect;
+    textUniforms.uHW.value = viewW/2;
+    // keep the headline huge but always fit the longest word on narrow screens
+    const longest = Math.max(...widths) * scaleDown / cv.height; // widest word, per unit of ribbon height
+    const newH = Math.min(viewH*0.36, (viewW*0.86)/longest);
+    if(Math.abs(newH - planeH) > 1e-3){
+      planeH = newH; planeW = planeH * cv.width / cv.height;
+      textMesh.geometry.dispose();
+      textMesh.geometry = new THREE.PlaneGeometry(planeW, planeH, 600, 8);
+    }
+    const js = Math.min(1.15, Math.max(0.62, viewW/11));
+    jelly.scale.setScalar(js);
+  }
+  addEventListener('resize', resize); resize();
+
+  /* ---------------- animate ---------------- */
+  const clock = new THREE.Clock();
+  let lastProg = 0, vel = 0, jx = 0, jy = 0.55, lagX = 0, lagY = 0, prevJx = 0, prevJy = 0;
+  document.getElementById('loader').classList.add('gone');
+
+  function frame(){
+    const dt = Math.min(0.05, clock.getDelta() || 0.016);
+    const t = clock.elapsedTime;
+
+    // words
+    prog += (target - prog) * 0.065;
+    vel += ((prog - lastProg) * 30 - vel) * 0.15; lastProg = prog;
+    textUniforms.uOff.value = offStart() + (offEnd() - offStart()) * prog;
+    textUniforms.uTime.value = t;
+    textUniforms.uVel.value = vel;
+    hint.style.opacity = touched ? Math.max(0, 1 - prog*12) : 0.5 + 0.5*Math.sin(t*2);
+    pct.textContent = String(Math.round(prog*100)).padStart(2,'0');
+    mark.style.top = (prog*100)+'%';
+    vb.style.top = (prog*70)+'%';
+
+    // pulse: quick contraction, slow relaxation
+    const cyc = (t * 0.55) % 1;
+    const pulse = cyc < 0.3 ? Math.sin(cyc/0.3*Math.PI/2) : Math.cos((cyc-0.3)/0.7*Math.PI/2);
+    bellUniforms.uPulse.value = pulse;
+    bellUniforms.uTime.value = t;
+
+    // float, drift toward cursor a little, lunge upward on each contraction
+    smx += (mx - smx) * 0.02; smy += (my - smy) * 0.02;
+    jx = smx * 0.9 + Math.sin(t*0.37)*0.25;
+    jy = 0.55 + smy*0.35 + Math.sin(t*0.5)*0.18 + pulse*0.12;
+    jelly.position.set(jx, jy, 0.8);
+    jelly.rotation.z = -smx*0.18 + Math.sin(t*0.6)*0.06;
+    jelly.rotation.x = 0.16 + smy*0.12;
+    jelly.rotation.y = t*0.12;
+
+    // tentacle lag from motion
+    lagX += ((jx - prevJx)/Math.max(dt,0.001)*0.12 - lagX)*0.08;
+    lagY += ((jy - prevJy)/Math.max(dt,0.001)*0.12 - lagY)*0.08;
+    prevJx = jx; prevJy = jy;
+
+    const rim = 1.04*(1 - 0.16*pulse), rimY = -0.1*(1+0.1*pulse);
+    const pts = [];
+    tentacles.forEach(tc => {
+      pts.length = 0;
+      const ca = Math.cos(tc.ang), sa = Math.sin(tc.ang);
+      for(let i=0;i<TSEG;i++){
+        const s = i/(TSEG-1), d = s*tc.len;
+        const sway = Math.sin(t*1.4 - s*5.0 + tc.ph) * 0.3 * s + Math.sin(t*2.1 - s*13.0 + tc.ph) * 0.07 * s;
+        const curl = Math.sin(t*0.9 - s*9.0 + tc.ph*2) * 0.12 * s;
+        const spread = 1 + s*0.25 + pulse*0.1*s;
+        pts.push([ ca*rim*0.96*spread + sway - lagX*s*s*1.5,
+                   rimY - d + pulse*0.18*s - lagY*s*0.3 + Math.abs(lagX)*s*s*0.4,
+                   sa*rim*0.96*spread + curl ]);
+      }
+      updateRibbon(tc.r, pts, s => tc.w * (1 - s*0.8));
+    });
+    arms.forEach(a => {
+      pts.length = 0;
+      const ca = Math.cos(a.ang + t*0.1), sa = Math.sin(a.ang + t*0.1);
+      for(let i=0;i<ASEG;i++){
+        const s = i/(ASEG-1), d = s*a.len;
+        const sway = Math.sin(t*1.1 - s*4.0 + a.ph) * 0.28 * s;
+        const twist = Math.sin(t*0.8 + s*3.0 + a.ph)*0.12;
+        pts.push([ ca*(0.16+twist*s) + sway - lagX*s*s*1.2,
+                   -0.1 - d + pulse*0.12*s,
+                   sa*(0.16+twist*s) ]);
+      }
+      updateRibbon(a.r, pts, s => a.w * (1 - s*0.75) * (0.7 + 0.3*Math.sin(s*34 - t*3 + a.ph)));
+    });
+
+    // particles drift upward slowly
+    const P = pg.attributes.position.array;
+    for(let i=0;i<NP;i++){ P[i*3+1] += ps[i]*0.004; P[i*3] += Math.sin(t*0.3+i)*0.0015; if(P[i*3+1] > 4.5) P[i*3+1] = -4.5; }
+    pg.attributes.position.needsUpdate = true;
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+</script>
+</body>
+</html>

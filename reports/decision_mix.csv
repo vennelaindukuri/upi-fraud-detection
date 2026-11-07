@@ -1,0 +1,4 @@
+decision,fraud,genuine
+ALLOW,22,10027
+BLOCK,199,3
+OTP VERIFY,34,18

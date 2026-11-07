@@ -1,0 +1,471 @@
+receiver_id,receiver_name,receiver_type,category,account_age_days,receiver_risk_score
+chaiwala.demo@okshield,Chai Wala,merchant,tea stall,451,0.013
+campuscanteen.demo@okshield,Campus Canteen,merchant,canteen,1615,0.026
+freshmart.demo@okshield,Fresh Mart,merchant,grocery,446,0.003
+citypharmacy.demo@okshield,City Pharmacy,merchant,pharmacy,1485,0.029
+fuelpoint.demo@okshield,Fuel Point,merchant,fuel,1550,0.024
+metrorecharge.demo@okshield,Metro Recharge,merchant,recharge,1593,0.004
+chaiwala1.demo@okshield,Chai Wala 1,merchant,tea stall,2123,0.011
+campuscanteen1.demo@okshield,Campus Canteen 1,merchant,canteen,1208,0.028
+freshmart1.demo@okshield,Fresh Mart 1,merchant,grocery,1986,0.025
+citypharmacy1.demo@okshield,City Pharmacy 1,merchant,pharmacy,1663,0.013
+fuelpoint1.demo@okshield,Fuel Point 1,merchant,fuel,1208,0.017
+metrorecharge1.demo@okshield,Metro Recharge 1,merchant,recharge,684,0.002
+spicegarden1.demo@okshield,Spice Garden 1,merchant,restaurant,2166,0.019
+dailybakery1.demo@okshield,Daily Bakery 1,merchant,bakery,2094,0.023
+paperplus1.demo@okshield,Paper Plus 1,merchant,stationery,1796,0.029
+stylesalon1.demo@okshield,Style Salon 1,merchant,salon,983,0.027
+quickride1.demo@okshield,Quick Ride 1,merchant,cab,1743,0.006
+booknook1.demo@okshield,Book Nook 1,merchant,books,1979,0.014
+gadgethub1.demo@okshield,Gadget Hub 1,merchant,electronics,1319,0.005
+trendwear1.demo@okshield,Trend Wear 1,merchant,clothing,252,0.02
+milkbasket1.demo@okshield,Milk Basket 1,merchant,dairy,37,0.058
+veggiecart1.demo@okshield,Veggie Cart 1,merchant,vegetables,38,0.096
+fitzone1.demo@okshield,Fit Zone 1,merchant,gym,39,0.169
+cleanwash1.demo@okshield,Clean Wash 1,merchant,laundry,1020,0.006
+chaiwala2.demo@okshield,Chai Wala 2,merchant,tea stall,18,0.06
+campuscanteen2.demo@okshield,Campus Canteen 2,merchant,canteen,455,0.007
+freshmart2.demo@okshield,Fresh Mart 2,merchant,grocery,36,0.086
+citypharmacy2.demo@okshield,City Pharmacy 2,merchant,pharmacy,1724,0.025
+fuelpoint2.demo@okshield,Fuel Point 2,merchant,fuel,1629,0.009
+metrorecharge2.demo@okshield,Metro Recharge 2,merchant,recharge,1795,0.025
+spicegarden2.demo@okshield,Spice Garden 2,merchant,restaurant,28,0.06
+dailybakery2.demo@okshield,Daily Bakery 2,merchant,bakery,2041,0.009
+paperplus2.demo@okshield,Paper Plus 2,merchant,stationery,5,0.162
+stylesalon2.demo@okshield,Style Salon 2,merchant,salon,1753,0.006
+quickride2.demo@okshield,Quick Ride 2,merchant,cab,2041,0.024
+booknook2.demo@okshield,Book Nook 2,merchant,books,167,0.02
+gadgethub2.demo@okshield,Gadget Hub 2,merchant,electronics,1258,0.023
+trendwear2.demo@okshield,Trend Wear 2,merchant,clothing,1807,0.014
+milkbasket2.demo@okshield,Milk Basket 2,merchant,dairy,1338,0.004
+veggiecart2.demo@okshield,Veggie Cart 2,merchant,vegetables,1486,0.003
+fitzone2.demo@okshield,Fit Zone 2,merchant,gym,1183,0.014
+cleanwash2.demo@okshield,Clean Wash 2,merchant,laundry,1720,0.017
+chaiwala3.demo@okshield,Chai Wala 3,merchant,tea stall,336,0.019
+campuscanteen3.demo@okshield,Campus Canteen 3,merchant,canteen,1947,0.017
+freshmart3.demo@okshield,Fresh Mart 3,merchant,grocery,362,0.009
+citypharmacy3.demo@okshield,City Pharmacy 3,merchant,pharmacy,20,0.154
+fuelpoint3.demo@okshield,Fuel Point 3,merchant,fuel,966,0.006
+metrorecharge3.demo@okshield,Metro Recharge 3,merchant,recharge,1176,0.012
+spicegarden3.demo@okshield,Spice Garden 3,merchant,restaurant,13,0.278
+dailybakery3.demo@okshield,Daily Bakery 3,merchant,bakery,6,0.081
+paperplus3.demo@okshield,Paper Plus 3,merchant,stationery,6,0.197
+stylesalon3.demo@okshield,Style Salon 3,merchant,salon,811,0.02
+quickride3.demo@okshield,Quick Ride 3,merchant,cab,446,0.024
+booknook3.demo@okshield,Book Nook 3,merchant,books,1459,0.02
+gadgethub3.demo@okshield,Gadget Hub 3,merchant,electronics,1111,0.024
+trendwear3.demo@okshield,Trend Wear 3,merchant,clothing,5,0.26
+milkbasket3.demo@okshield,Milk Basket 3,merchant,dairy,935,0.003
+veggiecart3.demo@okshield,Veggie Cart 3,merchant,vegetables,203,0.022
+fitzone3.demo@okshield,Fit Zone 3,merchant,gym,1787,0.005
+cleanwash3.demo@okshield,Clean Wash 3,merchant,laundry,1235,0.015
+chaiwala4.demo@okshield,Chai Wala 4,merchant,tea stall,2354,0.021
+campuscanteen4.demo@okshield,Campus Canteen 4,merchant,canteen,507,0.013
+freshmart4.demo@okshield,Fresh Mart 4,merchant,grocery,540,0.009
+citypharmacy4.demo@okshield,City Pharmacy 4,merchant,pharmacy,1045,0.019
+fuelpoint4.demo@okshield,Fuel Point 4,merchant,fuel,1576,0.003
+metrorecharge4.demo@okshield,Metro Recharge 4,merchant,recharge,1000,0.004
+spicegarden4.demo@okshield,Spice Garden 4,merchant,restaurant,946,0.027
+dailybakery4.demo@okshield,Daily Bakery 4,merchant,bakery,2410,0.021
+paperplus4.demo@okshield,Paper Plus 4,merchant,stationery,1224,0.029
+stylesalon4.demo@okshield,Style Salon 4,merchant,salon,774,0.023
+quickride4.demo@okshield,Quick Ride 4,merchant,cab,763,0.013
+booknook4.demo@okshield,Book Nook 4,merchant,books,1834,0.008
+gadgethub4.demo@okshield,Gadget Hub 4,merchant,electronics,336,0.027
+trendwear4.demo@okshield,Trend Wear 4,merchant,clothing,376,0.307
+milkbasket4.demo@okshield,Milk Basket 4,merchant,dairy,1804,0.009
+veggiecart4.demo@okshield,Veggie Cart 4,merchant,vegetables,28,0.226
+fitzone4.demo@okshield,Fit Zone 4,merchant,gym,1435,0.026
+cleanwash4.demo@okshield,Clean Wash 4,merchant,laundry,565,0.023
+chaiwala5.demo@okshield,Chai Wala 5,merchant,tea stall,1307,0.013
+campuscanteen5.demo@okshield,Campus Canteen 5,merchant,canteen,1840,0.019
+freshmart5.demo@okshield,Fresh Mart 5,merchant,grocery,479,0.019
+citypharmacy5.demo@okshield,City Pharmacy 5,merchant,pharmacy,1522,0.003
+fuelpoint5.demo@okshield,Fuel Point 5,merchant,fuel,1930,0.001
+metrorecharge5.demo@okshield,Metro Recharge 5,merchant,recharge,1127,0.015
+spicegarden5.demo@okshield,Spice Garden 5,merchant,restaurant,592,0.004
+dailybakery5.demo@okshield,Daily Bakery 5,merchant,bakery,925,0.003
+paperplus5.demo@okshield,Paper Plus 5,merchant,stationery,561,0.005
+stylesalon5.demo@okshield,Style Salon 5,merchant,salon,7,0.034
+quickride5.demo@okshield,Quick Ride 5,merchant,cab,2475,0.01
+booknook5.demo@okshield,Book Nook 5,merchant,books,1515,0.018
+gadgethub5.demo@okshield,Gadget Hub 5,merchant,electronics,842,0.029
+trendwear5.demo@okshield,Trend Wear 5,merchant,clothing,203,0.014
+milkbasket5.demo@okshield,Milk Basket 5,merchant,dairy,1247,0.002
+veggiecart5.demo@okshield,Veggie Cart 5,merchant,vegetables,1989,0.015
+fitzone5.demo@okshield,Fit Zone 5,merchant,gym,1727,0.028
+cleanwash5.demo@okshield,Clean Wash 5,merchant,laundry,1303,0.017
+chaiwala6.demo@okshield,Chai Wala 6,merchant,tea stall,18,0.11
+campuscanteen6.demo@okshield,Campus Canteen 6,merchant,canteen,1262,0.01
+freshmart6.demo@okshield,Fresh Mart 6,merchant,grocery,1430,0.013
+citypharmacy6.demo@okshield,City Pharmacy 6,merchant,pharmacy,24,0.191
+fuelpoint6.demo@okshield,Fuel Point 6,merchant,fuel,1004,0.027
+metrorecharge6.demo@okshield,Metro Recharge 6,merchant,recharge,2091,0.004
+spicegarden6.demo@okshield,Spice Garden 6,merchant,restaurant,860,0.003
+dailybakery6.demo@okshield,Daily Bakery 6,merchant,bakery,1451,0.02
+paperplus6.demo@okshield,Paper Plus 6,merchant,stationery,429,0.02
+stylesalon6.demo@okshield,Style Salon 6,merchant,salon,810,0.022
+quickride6.demo@okshield,Quick Ride 6,merchant,cab,2356,0.003
+booknook6.demo@okshield,Book Nook 6,merchant,books,1956,0.027
+gadgethub6.demo@okshield,Gadget Hub 6,merchant,electronics,2441,0.001
+trendwear6.demo@okshield,Trend Wear 6,merchant,clothing,691,0.017
+milkbasket6.demo@okshield,Milk Basket 6,merchant,dairy,1434,0.025
+veggiecart6.demo@okshield,Veggie Cart 6,merchant,vegetables,1021,0.024
+fitzone6.demo@okshield,Fit Zone 6,merchant,gym,2413,0.029
+cleanwash6.demo@okshield,Clean Wash 6,merchant,laundry,2,0.17
+chaiwala7.demo@okshield,Chai Wala 7,merchant,tea stall,1611,0.008
+campuscanteen7.demo@okshield,Campus Canteen 7,merchant,canteen,1360,0.522
+freshmart7.demo@okshield,Fresh Mart 7,merchant,grocery,574,0.001
+citypharmacy7.demo@okshield,City Pharmacy 7,merchant,pharmacy,536,0.013
+fuelpoint7.demo@okshield,Fuel Point 7,merchant,fuel,2428,0.027
+metrorecharge7.demo@okshield,Metro Recharge 7,merchant,recharge,2482,0.022
+spicegarden7.demo@okshield,Spice Garden 7,merchant,restaurant,2137,0.027
+dailybakery7.demo@okshield,Daily Bakery 7,merchant,bakery,2243,0.016
+paperplus7.demo@okshield,Paper Plus 7,merchant,stationery,1253,0.023
+stylesalon7.demo@okshield,Style Salon 7,merchant,salon,892,0.02
+quickride7.demo@okshield,Quick Ride 7,merchant,cab,1114,0.003
+booknook7.demo@okshield,Book Nook 7,merchant,books,1028,0.022
+gadgethub7.demo@okshield,Gadget Hub 7,merchant,electronics,1042,0.028
+trendwear7.demo@okshield,Trend Wear 7,merchant,clothing,766,0.007
+milkbasket7.demo@okshield,Milk Basket 7,merchant,dairy,224,0.025
+veggiecart7.demo@okshield,Veggie Cart 7,merchant,vegetables,438,0.005
+fitzone7.demo@okshield,Fit Zone 7,merchant,gym,1904,0.018
+cleanwash7.demo@okshield,Clean Wash 7,merchant,laundry,571,0.026
+chaiwala8.demo@okshield,Chai Wala 8,merchant,tea stall,255,0.009
+campuscanteen8.demo@okshield,Campus Canteen 8,merchant,canteen,611,0.023
+freshmart8.demo@okshield,Fresh Mart 8,merchant,grocery,902,0.015
+citypharmacy8.demo@okshield,City Pharmacy 8,merchant,pharmacy,2433,0.004
+fuelpoint8.demo@okshield,Fuel Point 8,merchant,fuel,2345,0.007
+metrorecharge8.demo@okshield,Metro Recharge 8,merchant,recharge,182,0.004
+spicegarden8.demo@okshield,Spice Garden 8,merchant,restaurant,192,0.351
+dailybakery8.demo@okshield,Daily Bakery 8,merchant,bakery,1742,0.015
+paperplus8.demo@okshield,Paper Plus 8,merchant,stationery,32,0.294
+stylesalon8.demo@okshield,Style Salon 8,merchant,salon,1781,0.006
+quickride8.demo@okshield,Quick Ride 8,merchant,cab,2181,0.021
+booknook8.demo@okshield,Book Nook 8,merchant,books,2039,0.022
+gadgethub8.demo@okshield,Gadget Hub 8,merchant,electronics,2090,0.004
+trendwear8.demo@okshield,Trend Wear 8,merchant,clothing,457,0.028
+milkbasket8.demo@okshield,Milk Basket 8,merchant,dairy,340,0.009
+veggiecart8.demo@okshield,Veggie Cart 8,merchant,vegetables,1084,0.015
+fitzone8.demo@okshield,Fit Zone 8,merchant,gym,1344,0.029
+cleanwash8.demo@okshield,Clean Wash 8,merchant,laundry,1707,0.009
+chaiwala9.demo@okshield,Chai Wala 9,merchant,tea stall,2406,0.001
+campuscanteen9.demo@okshield,Campus Canteen 9,merchant,canteen,2323,0.017
+freshmart9.demo@okshield,Fresh Mart 9,merchant,grocery,498,0.003
+citypharmacy9.demo@okshield,City Pharmacy 9,merchant,pharmacy,1639,0.004
+fuelpoint9.demo@okshield,Fuel Point 9,merchant,fuel,1909,0.029
+metrorecharge9.demo@okshield,Metro Recharge 9,merchant,recharge,1134,0.018
+spicegarden9.demo@okshield,Spice Garden 9,merchant,restaurant,576,0.024
+dailybakery9.demo@okshield,Daily Bakery 9,merchant,bakery,2342,0.014
+paperplus9.demo@okshield,Paper Plus 9,merchant,stationery,1640,0.001
+stylesalon9.demo@okshield,Style Salon 9,merchant,salon,1994,0.003
+quickride9.demo@okshield,Quick Ride 9,merchant,cab,826,0.024
+booknook9.demo@okshield,Book Nook 9,merchant,books,2099,0.488
+gadgethub9.demo@okshield,Gadget Hub 9,merchant,electronics,935,0.018
+trendwear9.demo@okshield,Trend Wear 9,merchant,clothing,1397,0.026
+milkbasket9.demo@okshield,Milk Basket 9,merchant,dairy,1920,0.012
+veggiecart9.demo@okshield,Veggie Cart 9,merchant,vegetables,1567,0.011
+fitzone9.demo@okshield,Fit Zone 9,merchant,gym,2327,0.02
+cleanwash9.demo@okshield,Clean Wash 9,merchant,laundry,1150,0.026
+chaiwala10.demo@okshield,Chai Wala 10,merchant,tea stall,794,0.007
+campuscanteen10.demo@okshield,Campus Canteen 10,merchant,canteen,1,0.289
+freshmart10.demo@okshield,Fresh Mart 10,merchant,grocery,2487,0.024
+citypharmacy10.demo@okshield,City Pharmacy 10,merchant,pharmacy,1903,0.003
+fuelpoint10.demo@okshield,Fuel Point 10,merchant,fuel,2221,0.018
+metrorecharge10.demo@okshield,Metro Recharge 10,merchant,recharge,306,0.004
+spicegarden10.demo@okshield,Spice Garden 10,merchant,restaurant,601,0.009
+dailybakery10.demo@okshield,Daily Bakery 10,merchant,bakery,2087,0.004
+paperplus10.demo@okshield,Paper Plus 10,merchant,stationery,2300,0.005
+stylesalon10.demo@okshield,Style Salon 10,merchant,salon,2314,0.009
+quickride10.demo@okshield,Quick Ride 10,merchant,cab,1506,0.003
+booknook10.demo@okshield,Book Nook 10,merchant,books,510,0.001
+gadgethub10.demo@okshield,Gadget Hub 10,merchant,electronics,1816,0.005
+trendwear10.demo@okshield,Trend Wear 10,merchant,clothing,280,0.334
+milkbasket10.demo@okshield,Milk Basket 10,merchant,dairy,1158,0.02
+veggiecart10.demo@okshield,Veggie Cart 10,merchant,vegetables,1539,0.012
+fitzone10.demo@okshield,Fit Zone 10,merchant,gym,2096,0.511
+cleanwash10.demo@okshield,Clean Wash 10,merchant,laundry,897,0.026
+chaiwala11.demo@okshield,Chai Wala 11,merchant,tea stall,2012,0.001
+campuscanteen11.demo@okshield,Campus Canteen 11,merchant,canteen,2150,0.005
+freshmart11.demo@okshield,Fresh Mart 11,merchant,grocery,2239,0.007
+citypharmacy11.demo@okshield,City Pharmacy 11,merchant,pharmacy,706,0.017
+fuelpoint11.demo@okshield,Fuel Point 11,merchant,fuel,2379,0.001
+metrorecharge11.demo@okshield,Metro Recharge 11,merchant,recharge,1128,0.011
+spicegarden11.demo@okshield,Spice Garden 11,merchant,restaurant,2325,0.003
+dailybakery11.demo@okshield,Daily Bakery 11,merchant,bakery,1380,0.025
+paperplus11.demo@okshield,Paper Plus 11,merchant,stationery,400,0.028
+stylesalon11.demo@okshield,Style Salon 11,merchant,salon,272,0.003
+quickride11.demo@okshield,Quick Ride 11,merchant,cab,2117,0.027
+booknook11.demo@okshield,Book Nook 11,merchant,books,2132,0.029
+gadgethub11.demo@okshield,Gadget Hub 11,merchant,electronics,903,0.023
+trendwear11.demo@okshield,Trend Wear 11,merchant,clothing,2034,0.019
+milkbasket11.demo@okshield,Milk Basket 11,merchant,dairy,1598,0.004
+veggiecart11.demo@okshield,Veggie Cart 11,merchant,vegetables,1980,0.016
+fitzone11.demo@okshield,Fit Zone 11,merchant,gym,909,0.026
+cleanwash11.demo@okshield,Clean Wash 11,merchant,laundry,1358,0.014
+chaiwala12.demo@okshield,Chai Wala 12,merchant,tea stall,1992,0.019
+campuscanteen12.demo@okshield,Campus Canteen 12,merchant,canteen,1054,0.008
+freshmart12.demo@okshield,Fresh Mart 12,merchant,grocery,293,0.014
+citypharmacy12.demo@okshield,City Pharmacy 12,merchant,pharmacy,478,0.013
+fuelpoint12.demo@okshield,Fuel Point 12,merchant,fuel,1569,0.011
+metrorecharge12.demo@okshield,Metro Recharge 12,merchant,recharge,696,0.011
+spicegarden12.demo@okshield,Spice Garden 12,merchant,restaurant,1881,0.011
+dailybakery12.demo@okshield,Daily Bakery 12,merchant,bakery,919,0.021
+paperplus12.demo@okshield,Paper Plus 12,merchant,stationery,703,0.028
+stylesalon12.demo@okshield,Style Salon 12,merchant,salon,847,0.027
+quickride12.demo@okshield,Quick Ride 12,merchant,cab,2157,0.01
+booknook12.demo@okshield,Book Nook 12,merchant,books,1280,0.016
+gadgethub12.demo@okshield,Gadget Hub 12,merchant,electronics,2407,0.02
+trendwear12.demo@okshield,Trend Wear 12,merchant,clothing,2144,0.024
+milkbasket12.demo@okshield,Milk Basket 12,merchant,dairy,1449,0.019
+veggiecart12.demo@okshield,Veggie Cart 12,merchant,vegetables,1401,0.009
+fitzone12.demo@okshield,Fit Zone 12,merchant,gym,565,0.006
+cleanwash12.demo@okshield,Clean Wash 12,merchant,laundry,1876,0.021
+chaiwala13.demo@okshield,Chai Wala 13,merchant,tea stall,1332,0.004
+campuscanteen13.demo@okshield,Campus Canteen 13,merchant,canteen,2172,0.018
+freshmart13.demo@okshield,Fresh Mart 13,merchant,grocery,1645,0.022
+citypharmacy13.demo@okshield,City Pharmacy 13,merchant,pharmacy,373,0.003
+fuelpoint13.demo@okshield,Fuel Point 13,merchant,fuel,1379,0.004
+metrorecharge13.demo@okshield,Metro Recharge 13,merchant,recharge,2349,0.029
+spicegarden13.demo@okshield,Spice Garden 13,merchant,restaurant,548,0.018
+dailybakery13.demo@okshield,Daily Bakery 13,merchant,bakery,2032,0.023
+paperplus13.demo@okshield,Paper Plus 13,merchant,stationery,2492,0.028
+stylesalon13.demo@okshield,Style Salon 13,merchant,salon,2018,0.008
+quickride13.demo@okshield,Quick Ride 13,merchant,cab,1846,0.003
+booknook13.demo@okshield,Book Nook 13,merchant,books,1536,0.018
+gadgethub13.demo@okshield,Gadget Hub 13,merchant,electronics,19,0.062
+trendwear13.demo@okshield,Trend Wear 13,merchant,clothing,552,0.017
+milkbasket13.demo@okshield,Milk Basket 13,merchant,dairy,1268,0.016
+veggiecart13.demo@okshield,Veggie Cart 13,merchant,vegetables,1245,0.023
+fitzone13.demo@okshield,Fit Zone 13,merchant,gym,2312,0.015
+cleanwash13.demo@okshield,Clean Wash 13,merchant,laundry,2028,0.018
+chaiwala14.demo@okshield,Chai Wala 14,merchant,tea stall,476,0.004
+campuscanteen14.demo@okshield,Campus Canteen 14,merchant,canteen,2338,0.004
+freshmart14.demo@okshield,Fresh Mart 14,merchant,grocery,1844,0.02
+citypharmacy14.demo@okshield,City Pharmacy 14,merchant,pharmacy,356,0.013
+fuelpoint14.demo@okshield,Fuel Point 14,merchant,fuel,2315,0.02
+metrorecharge14.demo@okshield,Metro Recharge 14,merchant,recharge,1969,0.01
+spicegarden14.demo@okshield,Spice Garden 14,merchant,restaurant,1884,0.023
+dailybakery14.demo@okshield,Daily Bakery 14,merchant,bakery,2261,0.008
+paperplus14.demo@okshield,Paper Plus 14,merchant,stationery,2018,0.009
+stylesalon14.demo@okshield,Style Salon 14,merchant,salon,37,0.245
+quickride14.demo@okshield,Quick Ride 14,merchant,cab,2409,0.028
+booknook14.demo@okshield,Book Nook 14,merchant,books,497,0.013
+gadgethub14.demo@okshield,Gadget Hub 14,merchant,electronics,1883,0.022
+trendwear14.demo@okshield,Trend Wear 14,merchant,clothing,1050,0.017
+milkbasket14.demo@okshield,Milk Basket 14,merchant,dairy,2380,0.023
+veggiecart14.demo@okshield,Veggie Cart 14,merchant,vegetables,2349,0.014
+cbit-fees.demo@okshield,CBIT Fees Portal,merchant,college fees,1500,0.0
+anil.demo@okshield,Anil,peer,person,591,0.02
+sneha.demo@okshield,Sneha,peer,person,14,0.298
+tarunp.demo@okshield,Tarun,peer,person,2554,0.002
+chaitanyap.demo@okshield,Chaitanya,peer,person,16,0.065
+aditip.demo@okshield,Aditi,peer,person,2646,0.002
+zoyap.demo@okshield,Zoya,peer,person,1947,0.012
+lakshmip.demo@okshield,Lakshmi,peer,person,193,0.0
+kavyap.demo@okshield,Kavya,peer,person,2089,0.009
+jayantp.demo@okshield,Jayant,peer,person,2195,0.006
+deepakp.demo@okshield,Deepak,peer,person,2493,0.009
+zoyap23.demo@okshield,Zoya,peer,person,1014,0.006
+vikramp.demo@okshield,Vikram,peer,person,1382,0.018
+zoyap79.demo@okshield,Zoya,peer,person,2240,0.002
+arjunp.demo@okshield,Arjun,peer,person,2365,0.02
+srinivasp.demo@okshield,Srinivas,peer,person,228,0.006
+rahulp.demo@okshield,Rahul,peer,person,2649,0.017
+akashp.demo@okshield,Akash,peer,person,225,0.02
+aditip21.demo@okshield,Aditi,peer,person,408,0.013
+ishap.demo@okshield,Isha,peer,person,495,0.002
+jayantp74.demo@okshield,Jayant,peer,person,18,0.151
+sureshp.demo@okshield,Suresh,peer,person,2603,0.005
+aditip81.demo@okshield,Aditi,peer,person,184,0.003
+harshap.demo@okshield,Harsha,peer,person,2577,0.004
+yaminip.demo@okshield,Yamini,peer,person,2352,0.018
+udayp.demo@okshield,Uday,peer,person,937,0.001
+vinayp.demo@okshield,Vinay,peer,person,2003,0.0
+sanjanap.demo@okshield,Sanjana,peer,person,553,0.012
+priyap.demo@okshield,Priya,peer,person,249,0.016
+jayantp67.demo@okshield,Jayant,peer,person,2893,0.017
+srinivasp45.demo@okshield,Srinivas,peer,person,791,0.001
+lokeshp.demo@okshield,Lokesh,peer,person,2040,0.019
+rakeshp.demo@okshield,Rakesh,peer,person,2422,0.015
+aaravp.demo@okshield,Aarav,peer,person,2553,0.017
+charanp.demo@okshield,Charan,peer,person,2124,0.001
+lokeshp30.demo@okshield,Lokesh,peer,person,1422,0.002
+vinayp64.demo@okshield,Vinay,peer,person,685,0.01
+naveenp.demo@okshield,Naveen,peer,person,1665,0.013
+lakshmip29.demo@okshield,Lakshmi,peer,person,2261,0.017
+ishap53.demo@okshield,Isha,peer,person,1401,0.015
+bhavyap.demo@okshield,Bhavya,peer,person,550,0.004
+arjunp58.demo@okshield,Arjun,peer,person,145,0.467
+bhavyap55.demo@okshield,Bhavya,peer,person,885,0.02
+padmap.demo@okshield,Padma,peer,person,2273,0.001
+nehap.demo@okshield,Neha,peer,person,35,0.083
+sureshp43.demo@okshield,Suresh,peer,person,112,0.018
+lokeshp15.demo@okshield,Lokesh,peer,person,222,0.014
+yashp.demo@okshield,Yash,peer,person,1293,0.002
+ramyap.demo@okshield,Ramya,peer,person,602,0.004
+sanjanap25.demo@okshield,Sanjana,peer,person,1191,0.009
+geethap.demo@okshield,Geetha,peer,person,2942,0.016
+anushap.demo@okshield,Anusha,peer,person,837,0.011
+poojap.demo@okshield,Pooja,peer,person,1945,0.003
+arjunp80.demo@okshield,Arjun,peer,person,820,0.006
+madhavp.demo@okshield,Madhav,peer,person,2843,0.012
+nandinip.demo@okshield,Nandini,peer,person,1658,0.013
+tarunp89.demo@okshield,Tarun,peer,person,2129,0.019
+sahithip.demo@okshield,Sahithi,peer,person,557,0.01
+rakeshp56.demo@okshield,Rakesh,peer,person,530,0.008
+snehap.demo@okshield,Sneha,peer,person,2749,0.002
+harshap18.demo@okshield,Harsha,peer,person,1475,0.003
+akashp94.demo@okshield,Akash,peer,person,2848,0.006
+jayantp47.demo@okshield,Jayant,peer,person,906,0.009
+arjunp39.demo@okshield,Arjun,peer,person,2378,0.013
+rakeshp22.demo@okshield,Rakesh,peer,person,1871,0.008
+poojap45.demo@okshield,Pooja,peer,person,544,0.004
+ramyap91.demo@okshield,Ramya,peer,person,13,0.138
+nandinip56.demo@okshield,Nandini,peer,person,1844,0.001
+farhanp.demo@okshield,Farhan,peer,person,1019,0.008
+nikhilp.demo@okshield,Nikhil,peer,person,1484,0.005
+nehap36.demo@okshield,Neha,peer,person,1474,0.011
+varunp.demo@okshield,Varun,peer,person,1117,0.014
+lakshmip99.demo@okshield,Lakshmi,peer,person,1740,0.013
+anushap97.demo@okshield,Anusha,peer,person,1802,0.006
+udayp19.demo@okshield,Uday,peer,person,1992,0.016
+sureshp91.demo@okshield,Suresh,peer,person,1093,0.009
+farhanp78.demo@okshield,Farhan,peer,person,1692,0.013
+yashp41.demo@okshield,Yash,peer,person,1626,0.01
+farhanp69.demo@okshield,Farhan,peer,person,1145,0.015
+poojap44.demo@okshield,Pooja,peer,person,1719,0.018
+anushap91.demo@okshield,Anusha,peer,person,2670,0.01
+vinayp81.demo@okshield,Vinay,peer,person,2226,0.016
+jayantp97.demo@okshield,Jayant,peer,person,1608,0.006
+meenap.demo@okshield,Meena,peer,person,1605,0.01
+nandinip17.demo@okshield,Nandini,peer,person,2528,0.002
+jayantp14.demo@okshield,Jayant,peer,person,262,0.017
+lokeshp50.demo@okshield,Lokesh,peer,person,308,0.001
+pranavp.demo@okshield,Pranav,peer,person,325,0.007
+lakshmip18.demo@okshield,Lakshmi,peer,person,913,0.003
+ishap82.demo@okshield,Isha,peer,person,2219,0.015
+sahithip50.demo@okshield,Sahithi,peer,person,1010,0.0
+ishap93.demo@okshield,Isha,peer,person,1366,0.017
+rohitp.demo@okshield,Rohit,peer,person,2498,0.007
+pranavp92.demo@okshield,Pranav,peer,person,2156,0.012
+ramyap28.demo@okshield,Ramya,peer,person,545,0.002
+kiranp.demo@okshield,Kiran,peer,person,1574,0.019
+deepakp41.demo@okshield,Deepak,peer,person,1158,0.02
+zoyap81.demo@okshield,Zoya,peer,person,2,0.245
+sanjanap43.demo@okshield,Sanjana,peer,person,2339,0.014
+zoyap84.demo@okshield,Zoya,peer,person,517,0.008
+rahulp84.demo@okshield,Rahul,peer,person,2145,0.013
+pranavp56.demo@okshield,Pranav,peer,person,1067,0.004
+jayantp27.demo@okshield,Jayant,peer,person,131,0.011
+saip.demo@okshield,Sai,peer,person,1453,0.003
+rohitp21.demo@okshield,Rohit,peer,person,574,0.017
+charanp16.demo@okshield,Charan,peer,person,2769,0.011
+rakeshp24.demo@okshield,Rakesh,peer,person,2968,0.017
+divyap.demo@okshield,Divya,peer,person,2424,0.003
+tarunp30.demo@okshield,Tarun,peer,person,2971,0.009
+keerthip.demo@okshield,Keerthi,peer,person,2544,0.002
+vikramp64.demo@okshield,Vikram,peer,person,14,0.067
+sureshp18.demo@okshield,Suresh,peer,person,219,0.009
+poojap58.demo@okshield,Pooja,peer,person,1357,0.003
+sureshp69.demo@okshield,Suresh,peer,person,988,0.018
+sandeepp.demo@okshield,Sandeep,peer,person,624,0.001
+kiranp80.demo@okshield,Kiran,peer,person,1933,0.006
+rakeshp11.demo@okshield,Rakesh,peer,person,775,0.01
+vikramp24.demo@okshield,Vikram,peer,person,2987,0.01
+vikramp78.demo@okshield,Vikram,peer,person,1800,0.002
+charanp44.demo@okshield,Charan,peer,person,879,0.017
+harinip.demo@okshield,Harini,peer,person,806,0.013
+udayp53.demo@okshield,Uday,peer,person,1712,0.013
+chaitanyap47.demo@okshield,Chaitanya,peer,person,1982,0.015
+rahulp30.demo@okshield,Rahul,peer,person,1880,0.007
+ramyap10.demo@okshield,Ramya,peer,person,268,0.011
+dineshp.demo@okshield,Dinesh,peer,person,2655,0.017
+yashp43.demo@okshield,Yash,peer,person,1081,0.482
+geethap74.demo@okshield,Geetha,peer,person,1640,0.017
+charanp32.demo@okshield,Charan,peer,person,2329,0.01
+saip23.demo@okshield,Sai,peer,person,1349,0.012
+rakeshp90.demo@okshield,Rakesh,peer,person,2737,0.017
+manasap.demo@okshield,Manasa,peer,person,15,0.125
+nandinip91.demo@okshield,Nandini,peer,person,1087,0.011
+saip87.demo@okshield,Sai,peer,person,1599,0.008
+harshap29.demo@okshield,Harsha,peer,person,404,0.018
+nikhilp30.demo@okshield,Nikhil,peer,person,1924,0.004
+sanjanap77.demo@okshield,Sanjana,peer,person,1929,0.007
+vamsip.demo@okshield,Vamsi,peer,person,1017,0.0
+aaravp86.demo@okshield,Aarav,peer,person,655,0.019
+meenap72.demo@okshield,Meena,peer,person,2103,0.006
+aditip24.demo@okshield,Aditi,peer,person,1399,0.012
+anushap56.demo@okshield,Anusha,peer,person,1742,0.006
+sahithip49.demo@okshield,Sahithi,peer,person,121,0.014
+kavyap17.demo@okshield,Kavya,peer,person,1624,0.338
+kavyap82.demo@okshield,Kavya,peer,person,1937,0.012
+bharathp.demo@okshield,Bharath,peer,person,27,0.044
+arjunp20.demo@okshield,Arjun,peer,person,4,0.239
+yashp72.demo@okshield,Yash,peer,person,18,0.206
+maheshp.demo@okshield,Mahesh,peer,person,2190,0.016
+anilp.demo@okshield,Anil,peer,person,1436,0.002
+geethap78.demo@okshield,Geetha,peer,person,2613,0.015
+harinip26.demo@okshield,Harini,peer,person,2446,0.011
+deepakp94.demo@okshield,Deepak,peer,person,1376,0.013
+refund-support.demo@okshield,Refund Support,suspicious,flagged,13,0.945
+lucky-draw99.demo@okshield,Lucky Draw,suspicious,flagged,29,0.701
+kyc-update.demo@okshield,KYC Update,suspicious,flagged,24,0.418
+cashback-offer.demo@okshield,Cashback Offer,suspicious,flagged,22,0.721
+refund10.demo@okshield,Refund Support 10,suspicious,flagged,1,0.526
+lucky11.demo@okshield,Lucky Draw 11,suspicious,flagged,4,0.861
+kyc12.demo@okshield,KYC Update 12,suspicious,flagged,28,0.944
+cashback13.demo@okshield,Cashback Offer 13,suspicious,flagged,15,0.736
+refund14.demo@okshield,Refund Support 14,suspicious,flagged,10,0.715
+lucky15.demo@okshield,Lucky Draw 15,suspicious,flagged,29,0.363
+kyc16.demo@okshield,KYC Update 16,suspicious,flagged,19,0.772
+cashback17.demo@okshield,Cashback Offer 17,suspicious,flagged,3,0.326
+refund18.demo@okshield,Refund Support 18,suspicious,flagged,8,0.353
+lucky19.demo@okshield,Lucky Draw 19,suspicious,flagged,27,0.565
+kyc20.demo@okshield,KYC Update 20,suspicious,flagged,2,0.569
+cashback21.demo@okshield,Cashback Offer 21,suspicious,flagged,11,0.594
+refund22.demo@okshield,Refund Support 22,suspicious,flagged,28,0.496
+lucky23.demo@okshield,Lucky Draw 23,suspicious,flagged,20,0.859
+kyc24.demo@okshield,KYC Update 24,suspicious,flagged,1,0.846
+cashback25.demo@okshield,Cashback Offer 25,suspicious,flagged,26,0.87
+gift-voucher77.demo@okshield,Gift Voucher 77,mule,new account,4,0.2
+agent1.demo@okshield,Agent 1,mule,new account,8,0.143
+agent2.demo@okshield,Agent 2,mule,new account,62,0.013
+agent3.demo@okshield,Agent 3,mule,new account,82,0.044
+agent4.demo@okshield,Agent 4,mule,new account,17,0.219
+agent5.demo@okshield,Agent 5,mule,new account,5,0.088
+agent6.demo@okshield,Agent 6,mule,new account,13,0.188
+agent7.demo@okshield,Agent 7,mule,new account,14,0.261
+agent8.demo@okshield,Agent 8,mule,new account,112,0.003
+agent9.demo@okshield,Agent 9,mule,new account,8,0.174
+agent10.demo@okshield,Agent 10,mule,new account,76,0.025
+agent11.demo@okshield,Agent 11,mule,new account,18,0.239
+agent12.demo@okshield,Agent 12,mule,new account,6,0.187
+agent13.demo@okshield,Agent 13,mule,new account,3,0.319
+agent14.demo@okshield,Agent 14,mule,new account,6,0.131
+agent15.demo@okshield,Agent 15,mule,new account,27,0.031
+agent16.demo@okshield,Agent 16,mule,new account,2,0.274
+agent17.demo@okshield,Agent 17,mule,new account,9,0.35
+agent18.demo@okshield,Agent 18,mule,new account,44,0.0
+agent19.demo@okshield,Agent 19,mule,new account,95,0.054
+agent20.demo@okshield,Agent 20,mule,new account,81,0.053
+agent21.demo@okshield,Agent 21,mule,new account,4,0.269
+agent22.demo@okshield,Agent 22,mule,new account,19,0.241
+agent23.demo@okshield,Agent 23,mule,new account,2,0.327
+agent24.demo@okshield,Agent 24,mule,new account,62,0.013
+agent25.demo@okshield,Agent 25,mule,new account,74,0.041
+agent26.demo@okshield,Agent 26,mule,new account,55,0.006
+agent27.demo@okshield,Agent 27,mule,new account,7,0.085
+agent28.demo@okshield,Agent 28,mule,new account,32,0.008
+agent29.demo@okshield,Agent 29,mule,new account,19,0.173
+agent30.demo@okshield,Agent 30,mule,new account,36,0.022
+agent31.demo@okshield,Agent 31,mule,new account,17,0.283
+agent32.demo@okshield,Agent 32,mule,new account,16,0.037
+agent33.demo@okshield,Agent 33,mule,new account,13,0.053
+agent34.demo@okshield,Agent 34,mule,new account,112,0.006
+agent35.demo@okshield,Agent 35,mule,new account,54,0.037
+agent36.demo@okshield,Agent 36,mule,new account,7,0.223
+agent37.demo@okshield,Agent 37,mule,new account,19,0.24
+agent38.demo@okshield,Agent 38,mule,new account,15,0.256
+agent39.demo@okshield,Agent 39,mule,new account,1,0.145
+agent40.demo@okshield,Agent 40,mule,new account,6,0.167

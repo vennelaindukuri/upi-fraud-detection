@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>REDFLAG — Make a transaction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css?v=9">
+</head>
+<body>
+<div class="bg"></div>
+
+<header class="top">
+  <a class="logo" href="/">redflag</a>
+  <nav>
+    <a href="#users" data-nav="users">Pay</a>
+    <a href="#attack" data-nav="attack">Attack</a>
+    <a href="#history" data-nav="history">History</a>
+    <button class="sound" id="soundBtn" title="Sound on/off" aria-label="Toggle sound">♪ <span>on</span></button>
+  </nav>
+</header>
+
+<main>
+  <!-- 01 · choose sender -->
+  <section id="users" class="screen">
+    <p class="eyebrow"><span>01</span> Sender</p>
+    <h1 class="display">Who's paying?</h1>
+    <p class="lede">Pick a demo account. Each one carries three months of payment history that the model compares every new payment against.</p>
+    <div class="users" id="userGrid"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+    <form class="glass newUser hidden" id="newUserForm" autocomplete="off">
+      <p class="eyebrow">New account</p>
+      <h3>Add a new user</h3>
+      <div class="nuGrid">
+        <label class="field"><span>Name</span><input id="nuName" placeholder="e.g. Rhea Kapoor" maxlength="40"></label>
+        <label class="field"><span>Role</span><select id="nuRole"><option>Student</option><option>Employee</option><option>Shopkeeper</option><option>Business owner</option><option>Homemaker</option><option>Freelancer</option><option>Retired</option></select></label>
+      </div>
+      <p class="muted">A new user has no payment history yet — REDFLAG learns their habits as they pay.</p>
+      <p class="formError" id="nuError"></p>
+      <div class="actions left"><button class="btn primary" type="submit">Create &amp; pay <b>→</b></button><button class="btn ghost" type="button" id="nuCancel">Cancel</button></div>
+    </form>
+  </section>
+
+  <!-- 02 · payment -->
+  <section id="pay" class="screen">
+    <p class="eyebrow"><span>02</span> Payment</p>
+    <h1 class="display">Send money</h1>
+    <div class="payGrid">
+      <div class="phone">
+        <div class="statusbar"><span id="clockLabel">13:00</span><i class="notch"></i><span>5G ▮▮▮</span></div>
+        <form class="payCard" id="payForm" autocomplete="off">
+          <div class="profile" id="profile"></div>
+
+          <div class="tabs" role="tablist">
+            <button type="button" class="tab active" data-tab="upi">UPI ID</button>
+            <button type="button" class="tab" data-tab="recent">Recent</button>
+            <button type="button" class="tab" data-tab="qr">Scan QR</button>
+          </div>
+
+          <div id="upiTab" class="tabPane">
+            <label class="field"><span>To</span><input id="receiver" placeholder="name.demo@okshield" spellcheck="false"></label>
+          </div>
+          <div class="pairCard hidden" id="pairCard"></div>
+          <div id="recentTab" class="tabPane hidden"><div id="recentPayees" class="payees"></div></div>
+          <div id="qrTab" class="tabPane hidden">
+            <p class="qrHint">Tap a QR code to scan it</p>
+            <div class="qrPick" id="qrPick"></div>
+            <div class="qrOk hidden" id="qrOk" role="status"><span class="qrOkIcon">✓</span><div><b>QR verified</b><small id="qrOkText">Safe to continue payment</small></div></div>
+            <label class="drop"><input id="qr" type="file" accept="image/*">
+              <b>Or upload a QR image</b><span id="qrState">PNG or JPG · we check it before you pay</span></label>
+            <a class="mini" href="/demo-qr" target="_blank">Open demo QR codes ↗</a>
+          </div>
+
+          <label class="field amount"><span>Amount</span><div class="amt"><em>₹</em><input id="amount" type="number" min="1" step="1" inputmode="numeric" placeholder="0"></div></label>
+          <div class="quick" id="quick"></div>
+          <p class="limitLine" id="limitLine"></p>
+
+          <div class="row2">
+            <div class="field"><span>Time</span>
+              <div class="seg" data-seg="clock"><button type="button" data-v="13" class="on">Day · 1 PM</button><button type="button" data-v="3">Night · 3 AM</button></div></div>
+            <div class="field"><span>Device</span>
+              <div class="seg" data-seg="device"><button type="button" data-v="usual" class="on">Usual</button><button type="button" data-v="new">New phone</button></div></div>
+          </div>
+
+          <label class="field"><span>Note</span><input id="note" placeholder="What's it for? (optional)"></label>
+          <p class="formError" id="formError"></p>
+          <button class="btn primary full" id="payBtn" type="submit">Pay securely <b>→</b></button>
+          <button type="button" class="link" data-go="users">← Switch sender</button>
+
+          <!-- fake-QR interstitial -->
+          <div class="qrWarn hidden" id="qrWarn" role="alertdialog" aria-labelledby="qrWarnTitle">
+            <div class="qrWarnIcon">!</div>
+            <p class="eyebrow">Before you pay</p>
+            <h2 id="qrWarnTitle">This QR looks fake</h2>
+            <p id="qrWarnText"></p>
+            <div class="qrCompare" id="qrCompare"></div>
+            <button type="button" class="btn primary full" id="qrCancel">Don't pay</button>
+            <button type="button" class="btn ghost full" id="qrAnyway">Pay anyway · extra verification</button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="glass engine">
+        <p class="eyebrow">Live fraud engine</p>
+        <h3>Watching every signal</h3>
+        <ul class="signals">
+          <li><i></i>Behaviour profile <b id="sigProfile">—</b></li>
+          <li><i></i>Velocity <b>Last 1 h · 24 h</b></li>
+          <li><i></i>Device trust <b id="sigDevice">Usual phone</b></li>
+          <li><i></i>Receiver intelligence <b>Risk · account age</b></li>
+          <li><i></i>Model <b>RF 70% + anomaly 30%</b></li>
+        </ul>
+        <div class="tiers">
+          <div><b class="c-allow">Allow</b><small>risk &lt; 25</small></div>
+          <div><b class="c-otp">Verify</b><small>25 – 70</small></div>
+          <div><b class="c-block">On hold</b><small>&gt; 70</small></div>
+        </div>
+        <div class="suggest"><p class="eyebrow">Suggested payees</p><div id="suggest"></div></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 03 · analysing -->
+  <section id="analyzing" class="screen center">
+    <div class="scanRing"><span></span><span></span><span></span><b></b></div>
+    <p class="eyebrow">Fraud engine active</p>
+    <h1 class="display">Scanning</h1>
+    <ul class="checks" id="checks">
+      <li>Payment history</li><li>Velocity</li><li>Device trust</li><li>Receiver trust</li><li>ML risk score</li>
+    </ul>
+  </section>
+
+  <!-- 04 · result -->
+  <section id="result" class="screen center">
+    <div class="glass resultCard" id="resultCard">
+      <div class="paidMark hidden" id="paidMark">✓</div>
+      <p class="eyebrow" id="resultType"></p>
+      <h1 class="display verdict" id="resultTitle"></h1>
+      <p class="lede" id="resultAmount"></p>
+
+      <div class="meter">
+        <div class="bar"><i id="riskFill"></i><em style="left:25%"></em><em style="left:70%"></em></div>
+        <div class="meterLegend"><span>Risk score</span><b id="riskNum"></b></div>
+      </div>
+      <div class="chips" id="reasons"></div>
+
+      <p class="stepNote hidden" id="stepNote"><b>Payment on hold. Are you sure you want to continue?</b><br>Only continue if you made this payment yourself. We'll send a one-time code to your registered phone — a fraudster using your login won't receive it.</p>
+      <div id="otpPanel" class="otp hidden">
+        <div class="sms" id="sms"><small>MESSAGES · now</small><p></p></div>
+        <div class="otpInputs" id="otpInputs"></div>
+        <p class="timer" id="timer"></p>
+        <button class="btn primary full" id="verify">Verify &amp; continue</button>
+        <p class="formError" id="otpError"></p>
+      </div>
+
+      <div id="burstPanel" class="burst hidden">
+        <p class="eyebrow">Burst — risk per attempt</p>
+        <div class="burstSteps" id="burstSteps"></div>
+        <div class="burstChart"><canvas id="burstCanvas"></canvas></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary hidden" id="confirm">Complete payment <b>→</b></button>
+        <button class="btn primary hidden" id="stepUp">Yes, continue payment <b>→</b></button>
+        <button class="btn danger hidden" id="bank">Report to bank</button>
+        <button class="btn ghost" id="again">New payment</button>
+        <button class="btn ghost" data-go="history">History</button>
+      </div>
+
+      <div class="insights">
+        <div class="ins">
+          <p class="eyebrow">Why this score</p>
+          <div id="whyBars" class="why"></div>
+          <p class="muted">How much each signal moved the risk, compared with a typical genuine payment.</p>
+        </div>
+        <div class="ins">
+          <p class="eyebrow">Compared to usual</p>
+          <div class="usualChart"><canvas id="usualCanvas"></canvas></div>
+          <p class="muted" id="usualNote"></p>
+        </div>
+        <div class="ins wide whatif" id="whatif">
+          <div class="wiHead"><p class="eyebrow">What if…</p><span class="muted">Drag or toggle — the model re-scores live. Nothing is paid.</span></div>
+          <div class="wiGrid">
+            <div>
+              <label class="field"><span>Amount <b id="wiAmtLabel"></b></span>
+                <input type="range" id="wiAmt" min="0" max="1000" step="1"></label>
+              <div class="row2">
+                <div class="field"><span>Time</span><div class="seg" data-seg="wiClock"><button type="button" data-v="13">Day</button><button type="button" data-v="3">Night</button></div></div>
+                <div class="field"><span>Device</span><div class="seg" data-seg="wiDevice"><button type="button" data-v="usual">Usual</button><button type="button" data-v="new">New</button></div></div>
+              </div>
+            </div>
+            <div class="wiOut">
+              <b id="wiDecision" class="wiDecision">—</b>
+              <div class="bar small"><i id="wiFill"></i><em style="left:25%"></em><em style="left:70%"></em></div>
+              <p><span id="wiRisk">—</span> / 100</p>
+              <small id="wiReason" class="muted"></small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <details class="details"><summary>Engine details</summary><div id="engineDetails"></div></details>
+    </div>
+  </section>
+
+
+  <!-- attack mode -->
+  <section id="attack" class="screen">
+    <p class="eyebrow"><span>Red team</span> Attack mode</p>
+    <h1 class="display">You're the fraudster</h1>
+    <p class="lede">You've stolen someone's UPI login and you're on your own phone. Try to drain the account. Anything that asks for an OTP counts as stopped — the code goes to the victim's phone, not yours.</p>
+    <div class="attackGrid">
+      <div class="glass attackCard">
+        <label class="field"><span>Victim</span><select id="atkVictim"></select></label>
+        <label class="field"><span>Send to</span><select id="atkTarget">
+          <option value="agent1.demo@okshield">Agent 1 · mule account</option>
+          <option value="gift-voucher77.demo@okshield">Gift Voucher 77 · 4-day-old account</option>
+          <option value="lucky-draw99.demo@okshield">Lucky Draw · flagged</option>
+          <option value="refund-support.demo@okshield">Refund Support · flagged</option>
+          <option value="__fav__">The victim's favourite payee (sneaky)</option>
+        </select></label>
+        <label class="field"><span>Amount <b id="atkAmtLabel"></b></span><input type="range" id="atkAmt" min="0" max="1000" step="1" value="420"></label>
+        <div class="row2">
+          <div class="field"><span>Time</span><div class="seg" data-seg="atkClock"><button type="button" data-v="13">Day</button><button type="button" data-v="3" class="on">Night</button></div></div>
+          <div class="field"><span>Phone</span><div class="seg" data-seg="atkDevice"><button type="button" data-v="new" class="on">Mine</button><button type="button" data-v="usual">Victim's</button></div></div>
+        </div>
+        <button class="btn danger full" id="atkGo">Attempt transfer <b>→</b></button>
+        <button class="link" id="atkReset">Reset this attack</button>
+      </div>
+      <div class="glass scoreboard">
+        <div class="score2"><div><small>Stolen</small><b id="atkStolen" class="c-block">₹0</b></div><div><small>Stopped</small><b id="atkStopped" class="c-allow">₹0</b></div><div><small>Attempts</small><b id="atkCount">0</b></div></div>
+        <div class="atkLog" id="atkLog"><p class="muted">Your attempts will show up here.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- history -->
+  <section id="history" class="screen">
+    <p class="eyebrow"><span>Account</span> History</p>
+    <div class="dashHead"><h1 class="display" id="histTitle">History</h1><label class="field inline"><span>Account</span><select id="histUser"></select></label></div>
+    <div class="kpis" id="histKpis"></div>
+    <div class="dash">
+      <div class="glass"><h3>Tried in this demo</h3><div id="histAttempts" class="feed"></div></div>
+      <div class="glass"><h3>Recorded payments</h3><div id="histPayments" class="feed"></div></div>
+    </div>
+  </section>
+
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="/static/app.js?v=11"></script>
+</body>
+</html>

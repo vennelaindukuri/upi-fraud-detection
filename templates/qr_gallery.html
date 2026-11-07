@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>REDFLAG — Demo QR codes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+<style>
+  .qrgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-top:28px}
+  .qr{padding:14px;border-radius:16px;text-decoration:none;display:block;transition:transform .25s,border-color .25s}
+  .qr:hover{transform:translateY(-3px);border-color:rgba(47,93,140,.45)}
+  .qr img{width:100%;aspect-ratio:1;object-fit:contain;background:#fff;border-radius:10px;image-rendering:pixelated}
+  .qr b{display:block;font:400 17px Anton,sans-serif;text-transform:uppercase;letter-spacing:.02em;margin-top:10px}
+  .qr small{display:block;font:11px "JetBrains Mono",monospace;color:var(--muted);overflow-wrap:anywhere}
+  .qr .k{font:600 9px "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;margin-top:8px;display:inline-block}
+  .qr.tampered{border-color:rgba(163,64,46,.45)}
+  .filters{display:flex;gap:6px;flex-wrap:wrap;margin-top:18px}
+  .filters button{border:1px solid var(--line);background:rgba(255,255,255,.35);border-radius:999px;padding:7px 12px;font:600 10px "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+  .filters button.on{background:var(--ink);color:var(--sky);border-color:var(--ink)}
+</style></head>
+<body>
+<div class="bg"></div>
+<header class="top">
+  <a class="logo" href="/">redflag</a>
+  <nav><a href="/app#users">Pay</a><a href="/app#attack">Attack</a><a href="/app#history">History</a></nav>
+</header>
+<main>
+  <p class="eyebrow"><span>Demo</span> QR codes</p>
+  <h1 class="display">Scan me</h1>
+  <p class="lede">Click a code to download it, then upload it under <b>Pay → Scan QR</b>. All addresses are fictional <code>@okshield</code> IDs; the red ones are deliberately tampered.</p>
+  <div class="filters" id="filters">
+    <button class="on" data-f="all">All</button><button data-f="tampered">Tampered</button><button data-f="suspicious">Flagged</button><button data-f="merchant">Merchants</button><button data-f="peer">People</button>
+  </div>
+  <div class="qrgrid" id="grid">
+    {% for r in qrs %}
+    <a class="glass qr {{ 'tampered' if r.category == 'tampered' else '' }}" data-c="{{ r.category }}" href="{{ url_for('static', filename='qr/' + r.file) }}" download>
+      <img src="{{ url_for('static', filename='qr/' + r.file) }}" alt="QR code for {{ r.name }}" loading="lazy">
+      <b>{{ r.name }}</b><small>{{ r.upi_id }}</small>
+      <span class="k {{ 'c-block' if r.category in ('tampered','suspicious','mule') else 'c-allow' }}">{{ r.category }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</main>
+<script>
+  document.querySelectorAll('#filters button').forEach(b => b.onclick = () => {
+    document.querySelectorAll('#filters button').forEach(x => x.classList.toggle('on', x === b));
+    document.querySelectorAll('.qr').forEach(q => q.style.display = (b.dataset.f === 'all' || q.dataset.c === b.dataset.f || (b.dataset.f === 'suspicious' && q.dataset.c === 'mule')) ? '' : 'none');
+  });
+</script>
+</body></html>
